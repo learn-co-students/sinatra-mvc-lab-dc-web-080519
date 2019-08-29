@@ -11,6 +11,7 @@ def piglatinizer(string)
   words = string.split
   while counter < words.length
     letters = words[counter].split("")
+    #binding.pry
     if "aeiou".include?(letters[0].downcase)
     # VOWEL CHECK
       piglatinized << words[counter] + "way"
@@ -18,14 +19,15 @@ def piglatinizer(string)
     # CONSONANT CHECK
       letters.each_with_index do |letter, index|
         if "aeiou".include?(letter.downcase)
-          binding.pry
-          letters.shift(index).unshift(letters).flatten.join + "ay"
+          #inding.pry
+          piglatinized << letters.shift(index).unshift(letters).flatten.join.downcase.capitalize + "ay"
+          break
         end
       end
     end
   counter += 1
   end
-  print piglatinized
+  piglatinized.join(" ").downcase
 end
 
-puts piglatinizer("Big Apple")
+puts piglatinizer("Flatiron School Loloa")
